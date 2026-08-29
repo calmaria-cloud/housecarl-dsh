@@ -42,6 +42,9 @@ desktop.ini
 *.log
 *.tmp
 
+## DSH build output (publish target of dsh/install.ps1)
+dsh/server/
+
 ## Generator output — deterministically reproducible via `dotnet run --project src/housecarl-generator`.
 ## Recipe is committed (the generator source); its output is not. Step 3 decides where the
 ## shipped corpus lives; until then it's regenerated on demand.

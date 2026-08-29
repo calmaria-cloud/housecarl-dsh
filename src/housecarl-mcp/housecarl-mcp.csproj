@@ -10,7 +10,7 @@
     ModelContextProtocol.AspNetCore supplies WithHttpTransport()/MapMcp().
   -->
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
