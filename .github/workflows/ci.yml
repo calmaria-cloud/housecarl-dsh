@@ -26,10 +26,10 @@ jobs:
       - name: Check out the code
         uses: actions/checkout@v7
 
-      - name: Set up .NET 9
+      - name: Set up .NET 10
         uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: '9.0.x'
+          dotnet-version: '10.0.x'
 
       # Cache the NuGet package restore across runs (keyed on the project files, which pin the
       # package versions). Trims the restore inside the build step below; the build itself still
@@ -51,7 +51,7 @@ jobs:
       # `::error::` annotation per failure, so the job still goes red on any failure and names which probe(s).
       # The probe set lives in CiAll.cs (single source of truth). See dev/plans/CI_OPTIMIZATION_RESEARCH_2026-06-24.md.
       - name: Probes — all-in-one-process (ci-all)
-        run: dotnet src/housecarl-generator/bin/Release/net9.0/housecarl-generator.dll ci-all
+        run: dotnet src/housecarl-generator/bin/Release/net10.0/housecarl-generator.dll ci-all
 
       # freshness-capture-guard runs as its OWN cold process: its deferral arm needs a write slow enough to
       # straddle a fixed ~100ms sleep — only true in a cold process. The warm ci-all runner finishes the write
@@ -60,4 +60,4 @@ jobs:
         # Run even if ci-all failed (but not if the run was cancelled), so one red run still shows whether
         # freshness passes — the same "report every failure" posture as the ci-all runner itself.
         if: ${{ !cancelled() }}
-        run: dotnet src/housecarl-generator/bin/Release/net9.0/housecarl-generator.dll freshness-capture-guard
+        run: dotnet src/housecarl-generator/bin/Release/net10.0/housecarl-generator.dll freshness-capture-guard
